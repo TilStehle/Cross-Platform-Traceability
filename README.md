@@ -1,7 +1,8 @@
 # Cross-Platform-Traceability
-This Project provides an IntelliJ Plugin that integrates J2Swift into the IntelliJ IDEA / Android Studio IDE.
+This project provides an IntelliJ plugin that integrates J2Swift into the IntelliJ IDEA / Android Studio IDE.
 Except from the swift output, a traceability model is created, that lets users navigate directly to swift resources.
-If you install the Refactorator App(https://github.com/johnno1962/RefactoratorApp) on OSX, there is also an action that lets you rename variables in Java and corresponding Swift files.
+If you install the Refactorator App(https://github.com/johnno1962/RefactoratorApp) on OSX, there is also a prototypal action that lets you rename variables in Java and corresponding Swift files.
+
 ##Build
 Open Project in IntelliJ IDEA (Tested with Community Edition 2016.2.5)
 Download antlr jar from https://mvnrepository.com/artifact/org.antlr/antlr4/4.5
