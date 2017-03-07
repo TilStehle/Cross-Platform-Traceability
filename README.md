@@ -19,3 +19,14 @@ You can generate default configurations for type mappings by pressing the "Gener
 
 Right-click a java file and select "J2Swift"->"convert selection to swift" (or "convert scope to swift", if you ave defined a scope)  
 Now you can access the converted Swift-File by right-clicking the class name or a method or field name and selecting "Go To"->"Swift Implementation"  
+
+##Acknowledgements
+
+We implemented the plugin in together with participants of a student project at the University of Hamburg. We would like to thank all participants for their efforts:
+Jakob Andersen   
+Nils-Hendrik Berger  
+Evelyn Fischer  
+Gerrit Greiert  
+Claas J\"ahrling  
+Fares Khanji  
+Maike Schulz.
