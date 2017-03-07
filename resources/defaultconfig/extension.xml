@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<extensionModel>
+    <protocolConformanceExtensions>
+        <codeFragment>
+            <code>
+                func == (o1:SELF, o2:SELF) -> Bool {
+                return o1.equals(o2)
+                }
+            </code>
+            <global>true</global>
+        </codeFragment>
+        <methodTrigger>equals</methodTrigger>
+        <protocol>Equatable</protocol>
+    </protocolConformanceExtensions>
+    <protocolConformanceExtensions>
+        <codeFragment>
+            <code>
+                public var hashValue : Int {
+                get {
+                return self.hashCode()
+                }
+                }
+            </code>
+            <global>false</global>
+        </codeFragment>
+        <implicate>Equatable</implicate>
+        <methodTrigger>hashCode</methodTrigger>
+        <protocol>Hashable</protocol>
+    </protocolConformanceExtensions>
+</extensionModel>

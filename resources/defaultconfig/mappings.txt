@@ -1,0 +1,26 @@
+Mappings for the J2Swift Mapper (#typeofmapping java swift)
+
+#type float Float
+#type Float Float
+#type int Int
+#type Integer Int
+#type long Int64
+#type Long Int64
+#type boolean sBool
+#type Boolean Bool
+#type Map Dictionary
+#type HashSet Set
+#type HashMap Dictionary
+#type java.util.List Array
+#type java.util.ArrayList Array
+#type Stack StackSwift
+#type Object NSObject
+#type android.content.Context ContextAdapter
+
+#modifier protected internal
+#modifier volatile /*volatile*/
+
+#method System.out.println print
+#method equals == 
+#method this.getClass().getName() self.dynamicType
+#method hashCode hashValue

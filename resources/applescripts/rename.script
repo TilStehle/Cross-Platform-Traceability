@@ -1,0 +1,61 @@
+set methodName to "$methodName"
+set newMethodName to "$newMethodName"
+set typeName to "$typeName"
+set methodLine to "$methodLine"
+set methodColumn to $methodColumn
+set xcodePath to "$xcodePath"
+
+tell application "Xcode"
+	set workspaceDocument to open xcodePath
+	set projectName to name of workspaceDocument
+	activate
+	tell application "System Events"
+		tell process "Xcode"
+			my jumpToMethodName(typeName, methodLine, methodColumn)
+			my renameUsingRefactorator(newMethodName)
+		end tell
+	end tell
+end tell
+
+on renameUsingRefactorator(newMethodName)
+	activate application "Refactorator"
+	tell application "System Events"
+		tell process "Refactorator"
+			keystroke "y" using {command down}
+			set value of text field 1 of splitter group 1 of front window to newMethodName
+			click button "Apply" of splitter group 1 of front window
+			click button "Save" of splitter group 1 of front window
+		end tell
+	end tell
+	activate application "Xcode"
+end replaceCurrentMethodNameInNextReference
+
+
+on jumpToMethodName(className, methodLine, methodNameColumn)
+	tell application "System Events"
+		tell process "Xcode"
+			keystroke "o" using {shift down, command down}
+			repeat until window "Open Quickly" exists
+			end repeat
+			set value of text field 1 of window "Open Quickly" to className
+			keystroke return
+
+			--navigate to method line
+			keystroke "l" using command down
+			repeat until window "Open Quickly" exists
+			end repeat
+			set value of text field 1 of window "Open Quickly" to methodLine
+			keystroke return
+
+			--set cursor to method name
+			key code 123 --left arrow key
+
+			repeat methodNameColumn times
+				key code 124 --right arrow key
+			end repeat
+
+		end tell
+	end tell
+
+
+end jumpToMethodName

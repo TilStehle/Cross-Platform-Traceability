@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="J2Swift">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/J2Swift.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ResourceConverter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

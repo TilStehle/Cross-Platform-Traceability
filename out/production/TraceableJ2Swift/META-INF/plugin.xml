@@ -1,0 +1,111 @@
+<idea-plugin version="2">
+  <id>de.uhh.mp16.j2swiftplugin</id>
+  <name>J2Swift Plugin</name>
+  <version>1.0</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Allows the translation from Java to Swift code using the J2Swift converter.<br>
+      <ul>
+        <li>Convert Java files to Swift</li>
+        <li>Convert Android string resources to R.swift and establish an adapter</li>
+        <li>Establish and view traceability links between Java and Swift code</li>
+      </ul>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <applicationConfigurable instance="preferences.Settings" id="J2Swift_settings" displayName="J2Swift" />
+    <applicationConfigurable instance="preferences.FQNTableUI.FullyQualifiedNameSettings" id="FQN_settings" displayName="Libaries for fully qualified name" parentId="J2Swift_settings"/>
+    <applicationConfigurable instance="preferences.ContextAdapterUI.ContextAdapterCreator" id="ContextAcapterCreator" displayName="Creates ContextAdapter.swift" parentId="J2Swift_settings"/>
+    <applicationConfigurable instance="preferences.ExtensionUI.ExtensionSettings" id="ExtensionSettings" displayName="Extension Settings" parentId="J2Swift_settings"/>
+    <toolWindow id="J2Swift" factoryClass="toolwindow.ToolWindowFactoryImpl" anchor="right" icon="/icons/icon_traceability.png"/>
+
+    <applicationService serviceImplementation="services.TraceabilityService"  />
+    <applicationService serviceImplementation="services.J2SwiftService" />
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <group id="J2SwiftGroup" text="J2Swift" popup="true">
+      <!-- Create a submenu in the context menu of the project browser tool window and add actions-->
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+
+      <action id="converter" class="actions.ConverterAction" text="Convert selection to Swift"
+              description="Performs action on selected element in project view">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta J"/>
+      </action>
+
+      <action id="scopeConverter" class="actions.ScopeConverterAction" text="Convert scope to Swift"
+              description="Performs action on selected scope">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta S"/>
+      </action>
+
+      <action id="resourceConverter" class="actions.ResourceConverterAction" text="Convert Android resources"
+                       description="Converts selected Android string resources into Swing compatible resources">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta R"/>
+    </action>
+
+        <separator/>
+      <action id="imageResourceManager" class="actions.ImageResourceConverterAction" text="Create imageset from Android-Resources"
+              description="Copies all the image-resources in the Android-Projeckt and creates the imagesets in the iOS-Projekt">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta I"/>
+      </action>
+        <action id="rAssettCreator" class="actions.RassettCreatorAction" text="Create R+assett"
+                description="Creates R+asset.swift of the imagesets">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta A"/>
+        </action>
+
+        <separator/>
+
+        <action id="addJarLibaryRecursively" class="actions.AddingJarsRecursivelyAction" text="Add Jars to FQN-Mapper recursively"
+                         description="Adds the jars in a directory to the Fully-Qualified-Name-Mapper, so all Classes can be properly converted.">
+
+    </action>
+
+      <action id="addJarLibaryRecursivley" class="actions.AddingJarAction" text="Add Jar to FQN-Mapper"
+              description="Adds the jar to the Fully-Qualified-Name-Mapper, so all Classes can be properly converted.">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta J"/>
+      </action>
+
+
+        <separator/>
+
+      <action id="openTargetPath" class="actions.TargetPathAction" text="Open target path"
+              description="Opens the selected target path in the system explorer">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta T"/>
+      </action>
+    </group>
+    <action class="actions.GotoLinkedImplementationAction" id="gotoConvertedMethodAction" text="Swift Implementation">
+      <add-to-group group-id="EditorPopupMenu.GoTo" anchor="first"></add-to-group>
+
+    </action>
+
+    <action class="actions.CrossPlatformRenameAction" id="crossPlatformrename" text="rename method and linked elements">
+      <add-to-group group-id="RefactoringMenu" anchor="first"></add-to-group>
+
+    </action>
+    <action class="actions.GoToConvertedTagAction" id="actions.GoToConvertedTagAction" text="Tag in converted XML" >
+      <add-to-group group-id = "EditorPopupMenu.GoTo" anchor="last">
+      </add-to-group>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta R"/>
+    </action>
+  </actions>
+
+</idea-plugin>
