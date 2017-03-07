@@ -27,6 +27,6 @@ Jakob Andersen
 Nils-Hendrik Berger  
 Evelyn Fischer  
 Gerrit Greiert  
-Claas J\"ahrling  
+Claas Jährling  
 Fares Khanji  
 Maike Schulz.
