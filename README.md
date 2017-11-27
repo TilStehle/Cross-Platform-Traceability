@@ -20,6 +20,8 @@ You can generate default configurations for type mappings by pressing the "Gener
 Right-click a java file and select "J2Swift"->"convert selection to swift" (or "convert scope to swift", if you ave defined a scope)  
 Now you can access the converted Swift-File by right-clicking the class name or a method or field name and selecting "Go To"->"Swift Implementation"  
 
+To perform a consistent Rename Refactoring for a Java-Element and its Swift Pendant(including all references), you have to install the Refactorator App (see https://github.com/johnno1962/RefactoratorApp). Open the XCode-Project of the Swift implementation and the Refactorator App. Now you can rename a Java method by right-clicking it in IntelliJ IDEA and selecting "rename method and linked elements" from the refactoring menu. In the shown popup you can select one of the proposed corresponding swift methods that shall be renamed consistently.
+
 ##Acknowledgements
 
 We implemented the plugin in together with participants of a student project at the University of Hamburg. We would like to thank all participants for their efforts:
